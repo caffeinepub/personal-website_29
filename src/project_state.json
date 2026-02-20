@@ -1,0 +1,183 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Building a shopping aggregator website that indexes products from multiple e-commerce platforms including Amazon, Flipkart, Meesho, BlinkIt, and other shopping centers",
+  "architectural_notes": [
+    "Multi-platform e-commerce aggregator requiring product data indexing from Amazon, Flipkart, Meesho, BlinkIt, and other shopping platforms",
+    "Will need product search and filtering capabilities across aggregated data"
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Amazon logo icon for platform badge (amazon-logo.dim_64x64.png)\n- Flipkart logo icon for platform badge (flipkart-logo.dim_64x64.png)\n- Meesho logo icon for platform badge (meesho-logo.dim_64x64.png)\n- BlinkIt logo icon for platform badge (blinkit-logo.dim_64x64.png)\n- Generic shopping bag icon for other platforms (generic-shop.dim_64x64.png)\n- Search icon illustration for the product search feature (search-icon.dim_128x128.png)",
+  "existing_features": [
+    {
+      "id": "feature-create-a-homepage-with-a-welcoming-hero-section-that-includes-a-headline-and-subheadline",
+      "title": "Create a homepage with a welcoming hero section that includes a headline and subheadline",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-navigation-header-with-links-to-main-sections-of-the-website",
+      "title": "Implement a navigation header with links to main sections of the website",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-an-about-section-that-provides-information-about-the-website-or-its-purpose",
+      "title": "Add an about section that provides information about the website or its purpose",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-footer-with-basic-information-and-links",
+      "title": "Create a footer with basic information and links",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-apply-a-creative-cohesive-visual-design-with-a-distinct-aesthetic-style-using-warm-earth-tones-elegant-typography-and-a-modern-minimalist-layout-that-feels-professional-and-inviting",
+      "title": "Apply a creative, cohesive visual design with a distinct aesthetic style using warm earth tones, elegant typography, and a modern minimalist layout that feels professional and inviting",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-products-page-in-the-frontend-that-displays-the-indexed-products-from-all-shopping-platforms-in-a-grid-layout-with-product-cards-showing-image-name-price-platform-badge-and-a-link-to-the-original-product",
+      "title": "Create a Products page in the frontend that displays the indexed products from all shopping platforms in a grid layout with product cards showing image, name, price, platform badge, and a link to the original product",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-search-bar-component-to-the-products-page-that-allows-users-to-search-products-by-name-or-filter-by-platform",
+      "title": "Add a search bar component to the Products page that allows users to search products by name or filter by platform",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-navigation-header-to-include-a-products-link-that-navigates-to-the-new-products-page",
+      "title": "Update the navigation header to include a Products link that navigates to the new Products page",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-hero-section-headline-and-subheadline-to-reflect-the-shopping-product-index-functionality-across-amazon-flipkart-meesho-blinkit-and-other-platforms",
+      "title": "Update the Hero section headline and subheadline to reflect the shopping product index functionality across Amazon, Flipkart, Meesho, BlinkIt, and other platforms",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create product index/catalog from Amazon",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Create product index/catalog from Flipkart",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Create product index/catalog from Meesho",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Create product index/catalog from BlinkIt",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Create product index/catalog from other shopping centers",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement unified product search across all indexed platforms",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Create a backend data model to store product information including name, price, description, image URL, category, platform source (Amazon, Flipkart, Meesho, BlinkIt, or other), and product URL",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Implement backend functions to add products from Amazon to the product index",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Implement backend functions to add products from Flipkart to the product index",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Implement backend functions to add products from Meesho to the product index",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Implement backend functions to add products from BlinkIt to the product index",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Implement backend functions to add products from other shopping platforms to the product index",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Implement backend search functionality to query products across all indexed platforms by name, category, or platform filter",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Personal Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

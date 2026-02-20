@@ -1,0 +1,208 @@
+{
+  "kind": "build_request",
+  "title": "Add multi-platform shopping product index and search",
+  "projectName": "Shop Index Hub",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-6",
+      "text": "Create a backend data model to store product information including name, price, description, image URL, category, platform source (Amazon, Flipkart, Meesho, BlinkIt, or other), and product URL",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product type includes all necessary fields for shopping product display",
+        "Platform source is captured as a text field or enum",
+        "Data structure supports multiple products from different platforms"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Implement backend functions to add products from Amazon to the product index",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "With the index of Amazon"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function accepts product details and stores them with Amazon as the platform source",
+        "Products can be retrieved by platform filter"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Implement backend functions to add products from Flipkart to the product index",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "filpcart"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function accepts product details and stores them with Flipkart as the platform source",
+        "Products can be retrieved by platform filter"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "text": "Implement backend functions to add products from Meesho to the product index",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "meesho"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function accepts product details and stores them with Meesho as the platform source",
+        "Products can be retrieved by platform filter"
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "text": "Implement backend functions to add products from BlinkIt to the product index",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "blink kit"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function accepts product details and stores them with BlinkIt as the platform source",
+        "Products can be retrieved by platform filter"
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "text": "Implement backend functions to add products from other shopping platforms to the product index",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "other shopping centre"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Function accepts product details with a custom platform name",
+        "Products can be retrieved by platform filter"
+      ]
+    },
+    {
+      "id": "REQ-12",
+      "text": "Implement backend search functionality to query products across all indexed platforms by name, category, or platform filter",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search returns products matching search terms from all platforms",
+        "Results can be filtered by specific platform",
+        "Search is case-insensitive"
+      ]
+    },
+    {
+      "id": "REQ-13",
+      "text": "Create a Products page in the frontend that displays the indexed products from all shopping platforms in a grid layout with product cards showing image, name, price, platform badge, and a link to the original product",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Products are displayed in a responsive grid",
+        "Each product card shows all required information",
+        "Platform source is visually indicated with a badge or label",
+        "Product links open in a new tab to the original platform"
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "text": "Add a search bar component to the Products page that allows users to search products by name or filter by platform",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Search input updates product display in real-time or on submit",
+        "Platform filter options include Amazon, Flipkart, Meesho, BlinkIt, and All Platforms",
+        "Search integrates with backend search functionality"
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "text": "Update the navigation header to include a Products link that navigates to the new Products page",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Products link is added to Header component navigation",
+        "Link uses smooth scroll or routing to Products section/page",
+        "Active state is indicated when on Products page"
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "text": "Update the Hero section headline and subheadline to reflect the shopping product index functionality across Amazon, Flipkart, Meesho, BlinkIt, and other platforms",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Headline communicates the multi-platform shopping index purpose",
+        "Subheadline mentions the included platforms",
+        "Text maintains the warm, professional tone of the existing design"
+      ]
+    }
+  ],
+  "constraints": [
+    "Maintain single-actor Motoko architecture in backend/main.mo",
+    "Preserve existing warm earth-tone design system and visual style",
+    "Do not modify immutable frontend paths (useInternetIdentity hooks, useActor, main.tsx, components/ui)",
+    "Use React, Tailwind CSS, and React Query for frontend implementation"
+  ],
+  "nonGoals": [
+    "Automated web scraping or real-time product data fetching from external platforms",
+    "Payment processing or checkout functionality",
+    "User accounts or wishlists",
+    "Price comparison algorithms or analytics",
+    "Integration with external e-commerce APIs"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Amazon logo icon for platform badge (amazon-logo.dim_64x64.png)",
+      "Flipkart logo icon for platform badge (flipkart-logo.dim_64x64.png)",
+      "Meesho logo icon for platform badge (meesho-logo.dim_64x64.png)",
+      "BlinkIt logo icon for platform badge (blinkit-logo.dim_64x64.png)",
+      "Generic shopping bag icon for other platforms (generic-shop.dim_64x64.png)",
+      "Search icon illustration for the product search feature (search-icon.dim_128x128.png)"
+    ],
+    "edits": []
+  }
+}

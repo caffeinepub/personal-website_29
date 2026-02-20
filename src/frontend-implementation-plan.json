@@ -1,0 +1,87 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add multi-platform shopping product index and search",
+  "requirements": [
+    {
+      "id": "REQ-13",
+      "summary": "Create a Products page that displays indexed products from all shopping platforms in a responsive grid with product cards",
+      "acceptanceCriteria": [
+        "Products are displayed in a responsive grid",
+        "Each product card shows all required information",
+        "Platform source is visually indicated with a badge or label",
+        "Product links open in a new tab to the original platform"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Products.tsx",
+          "operation": "create",
+          "description": "Create Products component that fetches products using useActor hook and backend getAllProducts method, displays them in a responsive grid layout with product cards showing image, name, price, platform badge using generated logo images from frontend/public/assets/generated/, and external product URL links that open in new tabs"
+        },
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create ProductCard component that renders individual product with image, name, price, category, platform badge (using generated logo images: frontend/public/assets/generated/amazon-logo.dim_64x64.png, frontend/public/assets/generated/flipkart-logo.dim_64x64.png, frontend/public/assets/generated/meesho-logo.dim_64x64.png, frontend/public/assets/generated/blinkit-logo.dim_64x64.png, frontend/public/assets/generated/generic-shop.dim_64x64.png), and external link button, using warm earth-tone styling consistent with existing design system"
+        }
+      ]
+    },
+    {
+      "id": "REQ-14",
+      "summary": "Add search bar and platform filter to Products page for querying products by name or platform",
+      "acceptanceCriteria": [
+        "Search input updates product display in real-time or on submit",
+        "Platform filter options include Amazon, Flipkart, Meesho, BlinkIt, and All Platforms",
+        "Search integrates with backend search functionality"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductSearch.tsx",
+          "operation": "create",
+          "description": "Create ProductSearch component with search input field and platform filter dropdown (Amazon, Flipkart, Meesho, BlinkIt, All Platforms), using generated frontend/public/assets/generated/search-icon.dim_128x128.png for search icon, integrating with backend searchProducts method via useActor hook to filter displayed products"
+        },
+        {
+          "path": "frontend/src/components/Products.tsx",
+          "operation": "modify",
+          "description": "Integrate ProductSearch component into Products page, manage search and filter state, call backend searchProducts method with search term and platform filter to update displayed product grid"
+        }
+      ]
+    },
+    {
+      "id": "REQ-15",
+      "summary": "Update navigation header to include Products link",
+      "acceptanceCriteria": [
+        "Products link is added to Header component navigation",
+        "Link uses smooth scroll or routing to Products section/page",
+        "Active state is indicated when on Products page"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Add Products navigation link to Header component navigation menu alongside existing links, implement smooth scroll to Products section, add active state styling consistent with existing header navigation pattern"
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Add Products component to App layout after Hero section and before About section to integrate Products page into the single-page application flow"
+        }
+      ]
+    },
+    {
+      "id": "REQ-16",
+      "summary": "Update Hero section to reflect multi-platform shopping index functionality",
+      "acceptanceCriteria": [
+        "Headline communicates the multi-platform shopping index purpose",
+        "Subheadline mentions the included platforms",
+        "Text maintains the warm, professional tone of the existing design"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Update Hero headline to communicate multi-platform shopping product index purpose, update subheadline to mention Amazon, Flipkart, Meesho, BlinkIt, and other shopping platforms, maintain warm professional tone consistent with existing design"
+        }
+      ]
+    }
+  ]
+}

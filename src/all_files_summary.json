@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Motoko actor defining Product type with platform variants (Amazon, Flipkart, Meesho, BlinkIt, other) and functions to add products, search with filters, and retrieve products by ID, platform, or category.",
+  "feature_evidence.json": "Feature evidence report documenting four implemented features: Products page with grid layout, search/filter functionality, navigation header update, and Hero section messaging update.",
+  "frontend-file-summaries.txt": "JSON-formatted summaries of frontend files describing warm earth tone styling, product components, search functionality, and integrated Products section in the application.",
+  "frontend/index.css": "Tailwind CSS configuration with OKLCH color system defining warm earth tone variables for light and dark modes, including background, foreground, primary, secondary, and chart colors.",
+  "frontend/index.html": "HTML entry point with root div and module script loading main.tsx for the React application.",
+  "frontend/src/App.tsx": "Main React component composing Header, Hero, Products, About, and Footer sections into a single-page application layout.",
+  "frontend/src/components/About.tsx": "About section component displaying three feature cards (Creative Excellence, Goal-Oriented, Passionate Work) with icons and a main content area describing the portfolio.",
+  "frontend/src/components/Footer.tsx": "Footer component with brand info, quick navigation links, contact email, social media buttons, copyright notice, and required caffeine.ai attribution with UTM tracking.",
+  "frontend/src/components/Header.tsx": "Fixed navigation header with Home, Products, About, Contact links, active section highlighting, smooth scroll behavior, and responsive mobile menu toggle.",
+  "frontend/src/components/Hero.tsx": "Hero section component with background image, headline text, call-to-action buttons for browsing products and learning more, and an animated scroll indicator.",
+  "frontend/src/components/ProductCard.tsx": "Displays individual product information in a card layout with image, platform logo, name, category, description, price, and a link to view the product on its source platform.",
+  "frontend/src/components/Products.tsx": "Main products section that manages search state, displays ProductSearch component, and renders a grid of ProductCard components using either all products or filtered search results.",
+  "frontend/src/components/ProductSearch.tsx": "Search interface with text input, platform filter dropdown (Amazon, Flipkart, Meesho, BlinkIt), and search button that triggers the onSearch callback with search term and platform filter.",
+  "frontend/src/hooks/useActor.ts": "React Query hook that creates and manages the backend actor instance based on Internet Identity authentication state, invalidating dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Context provider and hook for Internet Identity authentication, managing login/logout flow, identity state, and AuthClient lifecycle with configurable options.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for backend data operations: useGetAllProducts fetches all products, useSearchProducts filters by term and platform, and useAddProduct mutation adds new products with cache invalidation.",
+  "frontend/src/index.css": "Global styles with Tailwind CSS setup, custom warm earth-tone color palette for light and dark modes using CSS variables, and font configuration for Inter and Playfair Display.",
+  "frontend/src/main.tsx": "Application entry point that sets up React root with QueryClientProvider for React Query and InternetIdentityProvider for authentication context.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration file defining custom theme extensions including OKLCH color system with CSS variables, custom fonts (Inter, Playfair Display), border radius utilities, shadows, and animations for accordions and fade-in effects.",
+  "project_state.json": "Project state tracking file documenting a multi-platform e-commerce aggregator website that indexes products from Amazon, Flipkart, Meesho, BlinkIt and other platforms, with existing features including homepage, navigation, products page with search/filter, and platform-specific branding requirements."
+}
