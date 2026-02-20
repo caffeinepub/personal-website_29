@@ -1,15 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Build a multi-platform shopping product index with search functionality across Amazon, Flipkart, Meesho, BlinkIt, and other platforms.
+**Goal:** Investigate and fix the critical site loading issue preventing the website from opening.
 
 **Planned changes:**
-- Create backend data model to store product information (name, price, description, image URL, category, platform source, product URL)
-- Implement backend functions to add products from Amazon, Flipkart, Meesho, BlinkIt, and other platforms
-- Implement backend search functionality to query products by name, category, or platform filter
-- Create a Products page displaying indexed products in a grid layout with product cards
-- Add search bar component with platform filtering to the Products page
-- Update navigation header to include Products link
-- Update Hero section to reflect the multi-platform shopping index functionality
+- Identify root cause of loading failure through browser console inspection and error analysis
+- Fix all critical errors preventing initial page load (JavaScript errors, network failures, routing issues, backend connection problems)
+- Verify all application routes load correctly after fixing the issue
+- Ensure backend actor initialization and Internet Identity authentication work properly
 
-**User-visible outcome:** Users can browse and search products indexed from multiple shopping platforms (Amazon, Flipkart, Meesho, BlinkIt, and others) on a dedicated Products page, filter by platform, and click through to view products on their original platforms.
+**User-visible outcome:** The website loads successfully at the deployment URL, displaying the homepage with all sections (Header, Hero, Products, Footer) rendering correctly. Users can navigate between pages and access authenticated features without errors.

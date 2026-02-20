@@ -10,6 +10,36 @@ import type { ActorMethod } from '@icp-sdk/core/agent';
 import type { IDL } from '@icp-sdk/core/candid';
 import type { Principal } from '@icp-sdk/core/principal';
 
+export interface CustomerInfo {
+  'name' : string,
+  'email' : string,
+  'shippingAddress' : string,
+  'phone' : string,
+}
+export interface Order {
+  'id' : bigint,
+  'total' : bigint,
+  'paymentStatus' : PaymentStatus,
+  'customer' : CustomerInfo,
+  'orderStatus' : OrderStatus,
+  'createdBy' : Principal,
+  'orderDate' : Time,
+  'fulfillmentNotes' : [] | [string],
+  'products' : Array<OrderedProduct>,
+}
+export type OrderStatus = { 'shipped' : null } |
+  { 'cancelled' : null } |
+  { 'pending' : null } |
+  { 'delivered' : null } |
+  { 'processing' : null };
+export interface OrderedProduct {
+  'productId' : bigint,
+  'quantity' : bigint,
+  'priceAtPurchase' : bigint,
+}
+export type PaymentStatus = { 'pending' : null } |
+  { 'completed' : null } |
+  { 'failed' : null };
 export type Platform = { 'flipkart' : null } |
   { 'other' : string } |
   { 'amazon' : null } |
@@ -22,22 +52,91 @@ export interface Product {
   'description' : string,
   'platform' : Platform,
   'imageUrl' : string,
+  'listedPrice' : bigint,
   'category' : string,
   'price' : bigint,
 }
+export interface ShoppingItem {
+  'productName' : string,
+  'currency' : string,
+  'quantity' : bigint,
+  'priceInCents' : bigint,
+  'productDescription' : string,
+}
+export interface StripeConfiguration {
+  'allowedCountries' : Array<string>,
+  'secretKey' : string,
+}
+export type StripeSessionStatus = {
+    'completed' : { 'userPrincipal' : [] | [string], 'response' : string }
+  } |
+  { 'failed' : { 'error' : string } };
+export type Time = bigint;
+export interface TransformationInput {
+  'context' : Uint8Array,
+  'response' : http_request_result,
+}
+export interface TransformationOutput {
+  'status' : bigint,
+  'body' : Uint8Array,
+  'headers' : Array<http_header>,
+}
+export interface UserProfile {
+  'name' : string,
+  'email' : string,
+  'shippingAddress' : string,
+  'phone' : string,
+}
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
+export interface http_header { 'value' : string, 'name' : string }
+export interface http_request_result {
+  'status' : bigint,
+  'body' : Uint8Array,
+  'headers' : Array<http_header>,
+}
 export interface _SERVICE {
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'addFulfillmentNotes' : ActorMethod<[bigint, string], undefined>,
   'addProduct' : ActorMethod<
     [string, bigint, string, string, string, Platform, string],
     bigint
   >,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'createCheckoutSession' : ActorMethod<
+    [Array<ShoppingItem>, string, string],
+    string
+  >,
+  'createOrder' : ActorMethod<
+    [CustomerInfo, Array<OrderedProduct>, bigint],
+    bigint
+  >,
+  'getAllOrders' : ActorMethod<[bigint, bigint], Array<Order>>,
   'getAllProducts' : ActorMethod<[], Array<Product>>,
-  'getProductById' : ActorMethod<[bigint], [] | [Product]>,
+  'getCallerUserProfile' : ActorMethod<[], [] | [UserProfile]>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
+  'getMyOrders' : ActorMethod<[], Array<Order>>,
+  'getOrderById' : ActorMethod<[bigint], [] | [Order]>,
+  'getPriceMarkupPercentage' : ActorMethod<[], bigint>,
+  'getProduct' : ActorMethod<[bigint], [] | [Product]>,
   'getProductsByCategory' : ActorMethod<[string], Array<Product>>,
   'getProductsByPlatform' : ActorMethod<[Platform], Array<Product>>,
+  'getStripeSessionStatus' : ActorMethod<[string], StripeSessionStatus>,
+  'getUserProfile' : ActorMethod<[Principal], [] | [UserProfile]>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
+  'isStripeConfigured' : ActorMethod<[], boolean>,
+  'saveCallerUserProfile' : ActorMethod<[UserProfile], undefined>,
   'searchProducts' : ActorMethod<
     [string, [] | [string], [] | [Platform]],
     Array<Product>
   >,
+  'setPriceMarkupPercentage' : ActorMethod<[bigint], undefined>,
+  'setStripeConfiguration' : ActorMethod<[StripeConfiguration], undefined>,
+  'transform' : ActorMethod<[TransformationInput], TransformationOutput>,
+  'updateOrderStatus' : ActorMethod<[bigint, OrderStatus], undefined>,
+  'updatePaymentStatus' : ActorMethod<[bigint, PaymentStatus], undefined>,
+  'updateProductPrice' : ActorMethod<[bigint, bigint], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

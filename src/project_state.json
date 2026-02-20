@@ -1,14 +1,22 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Building a shopping aggregator website that indexes products from multiple e-commerce platforms including Amazon, Flipkart, Meesho, BlinkIt, and other shopping centers",
+  "projectStateVersion": 13,
+  "summary": "Building a dropshipping e-commerce website that collects products from Amazon, Flipkart, Meesho, and BlinkIt, allows customers to purchase at marked-up prices, and dropships directly from the source platforms. Features include shopping cart, checkout, payment processing, and order management. Email notifications and automatic stock checking requested but blocked by platform limitations.",
   "architectural_notes": [
     "Multi-platform e-commerce aggregator requiring product data indexing from Amazon, Flipkart, Meesho, BlinkIt, and other shopping platforms",
-    "Will need product search and filtering capabilities across aggregated data"
+    "Will need product search and filtering capabilities across aggregated data",
+    "Dropshipping business model: customers purchase through website at markup prices, orders fulfilled by purchasing from source platforms (Amazon, Flipkart, Meesho, BlinkIt)",
+    "Payment processing requires Stripe integration (paid subscription feature)",
+    "Email notifications blocked by platform (requires paid subscription upgrade)",
+    "Automatic stock checking not supported due to platform limitations (no external API calls)",
+    "Returns policy: accept returns only if original seller platform accepts returns"
   ],
-  "known_issues": [],
+  "known_issues": [
+    "Email feature disabled - cannot send order confirmations or shipping updates without paid subscription",
+    "Cannot perform automatic stock checking - platform does not support external API calls to e-commerce platforms",
+    "Real-time stock verification would require external services outside this platform"
+  ],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Amazon logo icon for platform badge (amazon-logo.dim_64x64.png)\n- Flipkart logo icon for platform badge (flipkart-logo.dim_64x64.png)\n- Meesho logo icon for platform badge (meesho-logo.dim_64x64.png)\n- BlinkIt logo icon for platform badge (blinkit-logo.dim_64x64.png)\n- Generic shopping bag icon for other platforms (generic-shop.dim_64x64.png)\n- Search icon illustration for the product search feature (search-icon.dim_128x128.png)",
   "existing_features": [
     {
       "id": "feature-create-a-homepage-with-a-welcoming-hero-section-that-includes-a-headline-and-subheadline",
@@ -79,6 +87,78 @@
       "title": "Update the Hero section headline and subheadline to reflect the shopping product index functionality across Amazon, Flipkart, Meesho, BlinkIt, and other platforms",
       "reqIds": [
         "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-shopping-cart-component-that-allows-users-to-add-products-from-the-product-catalog-view-cart-items-with-product-details-name-image-price-quantity-update-quantities-remove-items-and-display-the-total-cart-value-in-inr",
+      "title": "Create a shopping cart component that allows users to add products from the product catalog, view cart items with product details (name, image, price, quantity), update quantities, remove items, and display the total cart value in INR",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-checkout-page-that-collects-customer-information-including-full-name-shipping-address-street-city-state-postal-code-phone-number-and-email-address-with-form-validation-for-all-required-fields",
+      "title": "Create a checkout page that collects customer information including full name, shipping address (street, city, state, postal code), phone number, and email address, with form validation for all required fields",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-integrate-stripe-payment-processing-on-the-checkout-page-to-accept-customer-payments-in-inr-with-a-payment-form-that-processes-card-payments-and-displays-success-error-messages",
+      "title": "Integrate Stripe payment processing on the checkout page to accept customer payments in INR, with a payment form that processes card payments and displays success/error messages",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-an-admin-order-management-dashboard-page-that-displays-all-customer-orders-in-a-table-format-showing-order-id-customer-name-order-date-total-amount-order-status-and-actions-to-view-order-details-update-status-and-add-fulfillment-notes",
+      "title": "Create an admin order management dashboard page that displays all customer orders in a table format showing order ID, customer name, order date, total amount, order status, and actions to view order details, update status, and add fulfillment notes",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-product-pricing-display-throughout-the-application-to-show-marked-up-reselling-prices-instead-of-original-platform-prices-with-a-configurable-markup-percentage-or-fixed-amount-stored-in-the-backend",
+      "title": "Update the product pricing display throughout the application to show marked-up reselling prices instead of original platform prices, with a configurable markup percentage or fixed amount stored in the backend",
+      "reqIds": [
+        "REQ-33"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-customer-order-tracking-page-where-customers-can-view-their-order-history-by-entering-their-email-address-or-order-id-showing-order-status-items-ordered-shipping-address-and-order-timeline",
+      "title": "Add a customer order tracking page where customers can view their order history by entering their email address or order ID, showing order status, items ordered, shipping address, and order timeline",
+      "reqIds": [
+        "REQ-34"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-display-a-prominent-notification-banner-on-checkout-and-order-management-pages-informing-users-that-email-notifications-are-currently-unavailable-and-orders-will-need-to-be-tracked-manually-through-the-order-tracking-page",
+      "title": "Display a prominent notification banner on checkout and order management pages informing users that email notifications are currently unavailable and orders will need to be tracked manually through the order tracking page",
+      "reqIds": [
+        "REQ-35"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-manual-stock-verification-workflow-to-the-order-management-dashboard-where-the-admin-can-mark-stock-availability-status-for-each-order-item-before-processing-with-options-to-indicate-available-on-platform-out-of-stock-check-official-website-or-unavailable-and-display-platform-urls-for-manual-verification",
+      "title": "Add a manual stock verification workflow to the order management dashboard where the admin can mark stock availability status for each order item before processing, with options to indicate 'Available on Platform', 'Out of Stock - Check Official Website', or 'Unavailable', and display platform URLs for manual verification",
+      "reqIds": [
+        "REQ-36"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-returns-and-refunds-section-to-the-order-details-page-that-displays-the-return-policy-of-the-original-platform-amazon-flipkart-meesho-or-blinkit-where-the-product-was-sourced-with-a-note-that-returns-are-accepted-only-if-the-original-platform-accepts-returns",
+      "title": "Add a returns and refunds section to the order details page that displays the return policy of the original platform (Amazon, Flipkart, Meesho, or BlinkIt) where the product was sourced, with a note that returns are accepted only if the original platform accepts returns",
+      "reqIds": [
+        "REQ-37"
       ],
       "version": 1
     }
@@ -173,6 +253,164 @@
       "summary": "Implement backend search functionality to query products across all indexed platforms by name, category, or platform filter",
       "reqIds": [
         "REQ-12"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Add a representative set of product data from Amazon to the backend product catalog, including product name, price, description, image URL, category, platform (Amazon), and product URL for at least 10-15 diverse products across multiple categories",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Add a representative set of product data from Flipkart to the backend product catalog, including product name, price, description, image URL, category, platform (Flipkart), and product URL for at least 10-15 diverse products across multiple categories",
+      "reqIds": [
+        "REQ-18"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Add a representative set of product data from Meesho to the backend product catalog, including product name, price, description, image URL, category, platform (Meesho), and product URL for at least 10-15 diverse products across multiple categories",
+      "reqIds": [
+        "REQ-19"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-17",
+      "summary": "Add a representative set of product data from BlinkIt to the backend product catalog, including product name, price, description, image URL, category, platform (BlinkIt), and product URL for at least 10-15 diverse products across multiple categories",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-18",
+      "summary": "Ensure all added products from Amazon, Flipkart, Meesho, and BlinkIt are immediately visible on the Products page without requiring additional user interaction, and verify that search and filter functionality works correctly with the new product data",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-19",
+      "summary": "Add a representative set of at least 10-15 diverse product entries from Amazon to the backend product catalog, including product name, price, description, image URL, category, platform (Amazon), and product URL, covering multiple categories such as Electronics, Fashion, Home & Kitchen, Books, and Sports",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-20",
+      "summary": "Add a representative set of at least 10-15 diverse product entries from Flipkart to the backend product catalog, including product name, price, description, image URL, category, platform (Flipkart), and product URL, covering multiple categories such as Electronics, Fashion, Home & Kitchen, Books, and Sports",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-21",
+      "summary": "Add a representative set of at least 10-15 diverse product entries from Meesho to the backend product catalog, including product name, price, description, image URL, category, platform (Meesho), and product URL, covering multiple categories such as Fashion, Home Decor, Beauty, Kitchen, and Accessories",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-22",
+      "summary": "Add a representative set of at least 10-15 diverse product entries from BlinkIt to the backend product catalog, including product name, price, description, image URL, category, platform (BlinkIt), and product URL, covering multiple categories such as Groceries, Fresh Fruits & Vegetables, Dairy, Snacks, and Beverages",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-23",
+      "summary": "Verify that all added products from Amazon, Flipkart, Meesho, and BlinkIt are immediately visible on the Products page when the application loads, and confirm that the search and platform filter functionality works correctly with the new product data",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-24",
+      "summary": "Add shopping cart functionality to allow customers to add products and manage cart items",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-25",
+      "summary": "Implement checkout system to collect customer information (name, address, phone, email)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-26",
+      "summary": "Integrate payment processing with Stripe to accept customer payments",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-27",
+      "summary": "Create order management dashboard to track customer orders and fulfillment status",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-28",
+      "summary": "Update product pricing to display markup prices for reselling (not original platform prices)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-32",
+      "summary": "Create a backend data model for Order that stores order ID, customer information (name, email, phone, shipping address), ordered products (product IDs, quantities, prices at time of purchase), order total, order status (pending, processing, shipped, delivered, cancelled), payment status, order date, and fulfillment notes",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-33",
+      "summary": "Implement backend functions to create new orders after successful payment, retrieve orders by order ID, retrieve all orders with pagination, update order status, and add fulfillment notes",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-34",
+      "summary": "Investigate why the website fails to load and identify the root cause of the loading error (browser console errors, network failures, JavaScript exceptions, routing issues, or backend connection problems)",
+      "reqIds": [
+        "REQ-38"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-35",
+      "summary": "Fix all critical errors preventing the website from loading successfully so that the homepage displays correctly when users access the application URL",
+      "reqIds": [
+        "REQ-39"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-36",
+      "summary": "Verify that all application routes (/, /checkout, /payment-success, /payment-failure, /orders, /admin/dashboard, /admin/orders) load correctly without errors after fixing the initial loading issue",
+      "reqIds": [
+        "REQ-40"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-37",
+      "summary": "Ensure backend actor initialization and Internet Identity authentication work correctly so that authenticated features (cart, checkout, admin dashboard, order tracking) function properly after the site loads",
+      "reqIds": [
+        "REQ-41"
       ],
       "status": "pending"
     }

@@ -1,112 +1,75 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-20T05:20:29.519Z",
+  "generatedAt": "2026-02-20T06:26:13.026Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 11,
-    "implemented": 4,
+    "total": 4,
+    "implemented": 0,
     "items": [
       {
-        "id": "REQ-10",
-        "summary": "Implement backend functions to add products from BlinkIt to the product index",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-11",
-        "summary": "Implement backend functions to add products from other shopping platforms to the product index",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-12",
-        "summary": "Implement backend search functionality to query products across all indexed platforms by name, category, or platform filter",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-13",
-        "summary": "Create a Products page in the frontend that displays the indexed products from all shopping platforms in a grid layout with product cards showing image, name, price, platform badge, and a link to the original product",
-        "status": "implemented",
+        "id": "REQ-38",
+        "summary": "Investigate why the website fails to load and identify the root cause of the loading error (browser console errors, network failures, JavaScript exceptions, routing issues, or backend connection problems)",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/components/Products.tsx",
-          "frontend/src/components/ProductCard.tsx"
+          "frontend/src/main.tsx",
+          "frontend/src/App.tsx",
+          "frontend/src/hooks/useActor.ts",
+          "frontend/src/hooks/useInternetIdentity.ts"
         ],
-        "matchedFiles": [
-          "frontend/src/components/Products.tsx",
-          "frontend/src/components/ProductCard.tsx"
-        ]
+        "matchedFiles": []
       },
       {
-        "id": "REQ-14",
-        "summary": "Add a search bar component to the Products page that allows users to search products by name or filter by platform",
-        "status": "implemented",
+        "id": "REQ-39",
+        "summary": "Fix all critical errors preventing the website from loading successfully so that the homepage displays correctly when users access the application URL",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/components/ProductSearch.tsx",
-          "frontend/src/components/Products.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/ProductSearch.tsx",
-          "frontend/src/components/Products.tsx"
-        ]
-      },
-      {
-        "id": "REQ-15",
-        "summary": "Update the navigation header to include a Products link that navigates to the new Products page",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/main.tsx",
+          "frontend/src/router.tsx",
+          "frontend/src/components/Layout.tsx",
           "frontend/src/components/Header.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Products.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/index.html",
+          "frontend/src/hooks/useActor.ts"
         ],
-        "matchedFiles": [
-          "frontend/src/components/Header.tsx",
-          "frontend/src/App.tsx"
-        ]
+        "matchedFiles": []
       },
       {
-        "id": "REQ-16",
-        "summary": "Update the Hero section headline and subheadline to reflect the shopping product index functionality across Amazon, Flipkart, Meesho, BlinkIt, and other platforms",
-        "status": "implemented",
+        "id": "REQ-40",
+        "summary": "Verify that all application routes (/, /checkout, /payment-success, /payment-failure, /orders, /admin/dashboard, /admin/orders) load correctly without errors after fixing the initial loading issue",
+        "status": "missing",
         "plannedFiles": [
-          "frontend/src/components/Hero.tsx"
+          "frontend/src/router.tsx",
+          "frontend/src/pages/HomePage.tsx",
+          "frontend/src/pages/Checkout.tsx",
+          "frontend/src/pages/PaymentSuccess.tsx",
+          "frontend/src/pages/PaymentFailure.tsx",
+          "frontend/src/pages/OrderTracking.tsx",
+          "frontend/src/pages/AdminDashboard.tsx",
+          "frontend/src/pages/AdminOrders.tsx",
+          "frontend/src/components/AdminGuard.tsx"
         ],
-        "matchedFiles": [
-          "frontend/src/components/Hero.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Create a backend data model to store product information including name, price, description, image URL, category, platform source (Amazon, Flipkart, Meesho, BlinkIt, or other), and product URL",
-        "status": "unknown",
-        "plannedFiles": [],
         "matchedFiles": []
       },
       {
-        "id": "REQ-7",
-        "summary": "Implement backend functions to add products from Amazon to the product index",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Implement backend functions to add products from Flipkart to the product index",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-9",
-        "summary": "Implement backend functions to add products from Meesho to the product index",
-        "status": "unknown",
-        "plannedFiles": [],
+        "id": "REQ-41",
+        "summary": "Ensure backend actor initialization and Internet Identity authentication work correctly so that authenticated features (cart, checkout, admin dashboard, order tracking) function properly after the site loads",
+        "status": "missing",
+        "plannedFiles": [
+          "frontend/src/hooks/useActor.ts",
+          "frontend/src/hooks/useInternetIdentity.ts",
+          "frontend/src/hooks/useQueries.ts",
+          "frontend/src/components/LoginButton.tsx",
+          "frontend/src/contexts/CartContext.tsx",
+          "frontend/src/components/Cart.tsx",
+          "frontend/src/components/Payment.tsx",
+          "frontend/src/hooks/useCreateCheckoutSession.ts"
+        ],
         "matchedFiles": []
       }
     ]
@@ -114,27 +77,9 @@
   "changedFiles": [
     "backend/main.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/amazon-logo.dim_64x64.png",
-    "frontend/public/assets/generated/blinkit-logo.dim_64x64.png",
-    "frontend/public/assets/generated/flipkart-logo.dim_64x64.png",
-    "frontend/public/assets/generated/generic-shop.dim_64x64.png",
-    "frontend/public/assets/generated/meesho-logo.dim_64x64.png",
-    "frontend/public/assets/generated/search-icon.dim_128x128.png",
-    "frontend/src/App.tsx",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/components/Hero.tsx",
-    "frontend/src/components/ProductCard.tsx",
-    "frontend/src/components/ProductSearch.tsx",
-    "frontend/src/components/Products.tsx",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
-    "frontend/src/hooks/useQueries.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
