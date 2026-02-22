@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Investigate and fix the critical site loading issue preventing the website from opening.
+**Goal:** Add a gold and silver hexagonal background pattern to the home page and product management admin page.
 
 **Planned changes:**
-- Identify root cause of loading failure through browser console inspection and error analysis
-- Fix all critical errors preventing initial page load (JavaScript errors, network failures, routing issues, backend connection problems)
-- Verify all application routes load correctly after fixing the issue
-- Ensure backend actor initialization and Internet Identity authentication work properly
+- Apply a repeating gold and silver hexagonal pattern as the background for the home page
+- Apply the same hexagonal pattern as the background for the product management admin page (AdminDashboard)
+- Ensure the pattern is visible behind all content while maintaining readability
 
-**User-visible outcome:** The website loads successfully at the deployment URL, displaying the homepage with all sections (Header, Hero, Products, Footer) rendering correctly. Users can navigate between pages and access authenticated features without errors.
+**User-visible outcome:** Users will see a decorative gold and silver hexagonal pattern in the background of the home page and product management page, enhancing the visual design while keeping all functionality intact.

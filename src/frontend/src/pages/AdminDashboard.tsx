@@ -23,7 +23,7 @@ export default function AdminDashboard() {
 
   return (
     <AdminGuard>
-      <div className="min-h-screen bg-muted/30 py-24">
+      <div className="hexagonal-pattern min-h-screen py-24">
         <div className="container mx-auto px-4 max-w-6xl">
           <h1 className="text-3xl font-bold mb-8">Admin Dashboard</h1>
 

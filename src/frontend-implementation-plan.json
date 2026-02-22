@@ -1,203 +1,42 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Investigate and fix site loading issue",
+  "title": "Add gold and silver hexagonal background pattern to home and product pages",
   "requirements": [
     {
-      "id": "REQ-38",
-      "summary": "Investigate why the website fails to load and identify the root cause of the loading error",
+      "id": "REQ-22",
+      "summary": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
       "acceptanceCriteria": [
-        "The root cause of the site loading failure is identified through browser console inspection",
-        "Any JavaScript errors, network request failures, or backend connectivity issues are documented",
-        "The specific point of failure (initial page load, routing, API calls, or asset loading) is determined"
+        "Home page displays a repeating hexagonal pattern in gold and silver colors as the background",
+        "Background pattern is visible behind all existing content",
+        "Pattern maintains visual consistency with the warm earth-tone color scheme"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/main.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Add error boundary and console logging to capture initialization errors during app startup, React Query setup, and Internet Identity provider mounting"
-        },
-        {
-          "path": "frontend/src/App.tsx",
-          "operation": "modify",
-          "description": "Add error boundary around RouterProvider to catch routing initialization errors and log router configuration issues"
-        },
-        {
-          "path": "frontend/src/hooks/useActor.ts",
-          "operation": "modify",
-          "description": "Add detailed error logging and error state handling for backend actor initialization failures, authentication issues, and query invalidation problems"
-        },
-        {
-          "path": "frontend/src/hooks/useInternetIdentity.ts",
-          "operation": "modify",
-          "description": "Add error logging for Internet Identity initialization, AuthClient creation failures, and authentication state management issues"
-        }
-      ]
-    },
-    {
-      "id": "REQ-39",
-      "summary": "Fix all critical errors preventing the website from loading successfully so that the homepage displays correctly",
-      "acceptanceCriteria": [
-        "The website homepage loads successfully without errors in the browser console",
-        "All critical assets (HTML, CSS, JavaScript) load correctly",
-        "The Header, Hero section, Products section, and Footer render properly on the homepage",
-        "Navigation links are functional and clickable",
-        "The site is accessible from the deployment URL without requiring manual intervention"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/main.tsx",
-          "operation": "modify",
-          "description": "Fix any React Query client configuration issues, ensure proper provider nesting order, and resolve Internet Identity provider initialization errors"
-        },
-        {
-          "path": "frontend/src/router.tsx",
-          "operation": "modify",
-          "description": "Fix router configuration errors, ensure all route paths are valid, verify Layout component integration, and resolve any route component import issues"
-        },
-        {
-          "path": "frontend/src/components/Layout.tsx",
-          "operation": "modify",
-          "description": "Fix any rendering issues in Layout component, ensure Header and Footer components mount correctly, and resolve Outlet rendering problems"
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Fix navigation link rendering issues, resolve CartButton integration problems, fix LoginButton mounting errors, and ensure admin link conditional rendering works"
-        },
-        {
-          "path": "frontend/src/components/Hero.tsx",
-          "operation": "modify",
-          "description": "Fix hero background image loading by verifying the asset path references frontend/public/assets/generated/hero-bg.dim_1920x1080.png correctly and resolve any CSS/styling issues"
-        },
-        {
-          "path": "frontend/src/components/Products.tsx",
-          "operation": "modify",
-          "description": "Fix product loading errors, resolve React Query hook usage issues, and ensure ProductCard component rendering works correctly"
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Fix footer rendering issues, resolve navigation link problems, and ensure smooth scrolling functionality works"
-        },
-        {
-          "path": "frontend/index.html",
-          "operation": "modify",
-          "description": "Verify HTML structure is valid, ensure script tag correctly references main.tsx, and fix any asset loading path issues"
-        },
-        {
-          "path": "frontend/src/hooks/useActor.ts",
-          "operation": "modify",
-          "description": "Fix backend actor creation errors, resolve identity-based actor initialization issues, ensure proper error handling for failed actor setup, and verify React Query cache invalidation works correctly"
-        }
-      ]
-    },
-    {
-      "id": "REQ-40",
-      "summary": "Verify that all application routes load correctly without errors after fixing the initial loading issue",
-      "acceptanceCriteria": [
-        "All defined routes in the router configuration are accessible",
-        "Navigation between pages works smoothly without console errors",
-        "Protected routes (admin pages, order tracking) display appropriate authentication guards",
-        "The Layout component (Header and Footer) renders consistently across all pages"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/router.tsx",
-          "operation": "modify",
-          "description": "Verify all route definitions (/, /checkout, /payment-success, /payment-failure, /orders, /admin/dashboard, /admin/orders) are correctly configured with proper component imports and Layout integration"
+          "description": "Add CSS classes for the hexagonal background pattern using SVG data URI. Create a repeating hexagonal pattern in gold (#D4AF37) and silver (#C0C0C0) colors that integrates with the warm earth-tone color scheme. The pattern should be defined as a reusable utility class that can be applied to page backgrounds without interfering with existing color variables or typography styles."
         },
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Fix any rendering issues preventing the homepage from loading, ensure Hero, Products, and About components integrate correctly"
-        },
-        {
-          "path": "frontend/src/pages/Checkout.tsx",
-          "operation": "modify",
-          "description": "Fix checkout page loading issues, resolve form rendering problems, ensure Payment component integration works, and verify PaymentSetup banner displays correctly"
-        },
-        {
-          "path": "frontend/src/pages/PaymentSuccess.tsx",
-          "operation": "modify",
-          "description": "Fix payment success page loading issues, resolve order creation errors, ensure proper navigation after successful payment"
-        },
-        {
-          "path": "frontend/src/pages/PaymentFailure.tsx",
-          "operation": "modify",
-          "description": "Fix payment failure page loading issues and ensure navigation buttons work correctly"
-        },
-        {
-          "path": "frontend/src/pages/OrderTracking.tsx",
-          "operation": "modify",
-          "description": "Fix order tracking page loading issues, resolve authentication check errors, ensure order list rendering works with OrderTimeline components"
-        },
-        {
-          "path": "frontend/src/pages/AdminDashboard.tsx",
-          "operation": "modify",
-          "description": "Fix admin dashboard loading issues, resolve AdminGuard integration problems, ensure MarkupSettings component renders correctly"
-        },
-        {
-          "path": "frontend/src/pages/AdminOrders.tsx",
-          "operation": "modify",
-          "description": "Fix admin orders page loading issues, resolve AdminGuard integration, ensure order table and OrderDetailsModal render correctly"
-        },
-        {
-          "path": "frontend/src/components/AdminGuard.tsx",
-          "operation": "modify",
-          "description": "Fix authentication and admin privilege checking logic, ensure proper error message display for unauthorized access"
+          "description": "Add a wrapping div with the hexagonal pattern background class around the existing Hero, Products, and About sections. Ensure the background covers the entire page height and is positioned behind all content. Maintain all existing functionality including smooth scrolling and section rendering."
         }
       ]
     },
     {
-      "id": "REQ-41",
-      "summary": "Ensure backend actor initialization and Internet Identity authentication work correctly so that authenticated features function properly",
+      "id": "REQ-23",
+      "summary": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
       "acceptanceCriteria": [
-        "The backend actor initializes successfully using the useActor hook",
-        "Internet Identity authentication can be triggered and completes without errors",
-        "React Query successfully fetches data from backend queries (products, orders, admin status)",
-        "Authenticated users can access protected features like adding items to cart and viewing orders"
+        "Product management page displays the same repeating hexagonal pattern as the home page",
+        "Background pattern is visible behind the product form and product list",
+        "Pattern does not interfere with readability of forms or product information"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useActor.ts",
+          "path": "frontend/src/pages/AdminDashboard.tsx",
           "operation": "modify",
-          "description": "Fix backend actor initialization by ensuring proper canister ID resolution, fixing AuthClient integration, resolving identity-based actor creation errors, and ensuring access control initialization completes successfully. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useInternetIdentity.ts",
-          "operation": "modify",
-          "description": "Do not modify Internet Identity authentication implementation per BuildRequest constraints. Only add minimal error logging if needed for debugging without changing core functionality."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Fix React Query hook implementations to ensure proper backend actor usage, resolve query key conflicts, fix enabled conditions, and ensure proper error handling for all backend queries"
-        },
-        {
-          "path": "frontend/src/components/LoginButton.tsx",
-          "operation": "modify",
-          "description": "Fix login/logout flow errors, resolve query cache clearing issues on logout, ensure proper error handling for authentication failures. Use the authorization component to support authentication state management."
-        },
-        {
-          "path": "frontend/src/contexts/CartContext.tsx",
-          "operation": "modify",
-          "description": "Fix cart state management issues, resolve localStorage persistence errors, ensure cart operations work correctly with authentication state"
-        },
-        {
-          "path": "frontend/src/components/Cart.tsx",
-          "operation": "modify",
-          "description": "Fix cart rendering issues, resolve quantity update errors, ensure remove and checkout button functionality works correctly"
-        },
-        {
-          "path": "frontend/src/components/Payment.tsx",
-          "operation": "modify",
-          "description": "Fix Stripe checkout session creation errors, resolve redirect issues to Stripe URL, ensure proper integration with useCreateCheckoutSession hook. Use the stripe component to support payment functionality. Verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/useCreateCheckoutSession.ts",
-          "operation": "modify",
-          "description": "Fix checkout session mutation errors, resolve JSON parsing issues for Stripe session response, ensure proper URL validation before redirect. Use the stripe component to support checkout session creation. Verify the component's usage instructions before implementing."
+          "description": "Apply the same hexagonal pattern background class created in REQ-22 to the AdminDashboard page. Add a wrapping div with the pattern behind the AdminGuard-protected content including overview statistics, quick actions, and MarkupSettings component. Ensure text readability is maintained by keeping existing card backgrounds and contrast levels intact."
         }
       ]
     }

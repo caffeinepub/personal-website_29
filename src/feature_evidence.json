@@ -1,4 +1,48 @@
 {
   "kind": "feature_evidence_report",
-  "features": []
+  "features": [
+    {
+      "featureId": "feature-apply-a-gold-and-silver-hexagonal-background-pattern-to-the-home-page-that-covers-the-entire-page-background",
+      "featureTitle": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
+      "files": [
+        "frontend/src/index.css",
+        "frontend/src/pages/HomePage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-22"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-apply-the-same-gold-and-silver-hexagonal-background-pattern-to-the-product-management-admin-page-admindashboard",
+      "featureTitle": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
+      "files": [
+        "frontend/src/pages/AdminDashboard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-23"
+      ],
+      "confidence": "high"
+    }
+  ]
 }
