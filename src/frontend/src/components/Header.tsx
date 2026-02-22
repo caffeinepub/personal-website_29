@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useNavigate, useLocation } from '@tanstack/react-router';
-import CartButton from './CartButton';
 import LoginButton from './LoginButton';
 import { useInternetIdentity } from '../hooks/useInternetIdentity';
 import { useIsCallerAdmin } from '../hooks/useQueries';
@@ -102,7 +101,6 @@ export default function Header() {
           </nav>
 
           <div className="flex items-center gap-2">
-            <CartButton />
             <LoginButton />
             <Button
               variant="ghost"

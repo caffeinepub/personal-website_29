@@ -1,10 +1,8 @@
-import { ExternalLink, ShoppingCart } from 'lucide-react';
+import { ExternalLink } from 'lucide-react';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import type { Product } from '../backend';
-import { useCart } from '../contexts/CartContext';
-import { useState } from 'react';
 
 interface ProductCardProps {
   product: Product;
@@ -30,8 +28,6 @@ export default function ProductCard({ product }: ProductCardProps) {
   const platformKey = product.platform.__kind__;
   const platformName = platformNames[platformKey] || platformKey;
   const platformLogo = platformLogos[platformKey] || platformLogos.other;
-  const { addToCart } = useCart();
-  const [added, setAdded] = useState(false);
 
   const formatPrice = (price: bigint) => {
     return new Intl.NumberFormat('en-IN', {
@@ -39,12 +35,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       currency: 'INR',
       maximumFractionDigits: 0,
     }).format(Number(price));
-  };
-
-  const handleAddToCart = () => {
-    addToCart(product);
-    setAdded(true);
-    setTimeout(() => setAdded(false), 2000);
   };
 
   return (
@@ -87,18 +77,11 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </CardContent>
 
-      <CardFooter className="p-4 pt-0 flex gap-2">
-        <Button
-          onClick={handleAddToCart}
-          className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground gap-2"
-          disabled={added}
-        >
-          <ShoppingCart className="h-4 w-4" />
-          {added ? 'Added!' : 'Add to Cart'}
-        </Button>
-        <Button variant="outline" size="icon" asChild>
+      <CardFooter className="p-4 pt-0">
+        <Button variant="default" className="w-full gap-2" asChild>
           <a href={product.productUrl} target="_blank" rel="noopener noreferrer">
             <ExternalLink className="h-4 w-4" />
+            View on {platformName}
           </a>
         </Button>
       </CardFooter>

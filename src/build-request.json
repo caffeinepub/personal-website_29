@@ -1,59 +1,136 @@
 {
   "kind": "build_request",
-  "title": "Add gold and silver hexagonal background pattern to home and product pages",
-  "projectName": "Multi-Platform Store",
+  "title": "Remove cart functionality",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-22",
-      "text": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
+      "id": "REQ-1",
+      "text": "Remove the CartContext provider and all cart state management logic from frontend/src/contexts/CartContext.tsx",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-request"
-        ],
-        "quotes": [
-          "change the layout of both pages into a gold and silver in hexagonal pattern",
-          "Background pattern"
+          "msg-user-proceed"
         ]
       },
       "acceptanceCriteria": [
-        "Home page displays a repeating hexagonal pattern in gold and silver colors as the background",
-        "Background pattern is visible behind all existing content",
-        "Pattern maintains visual consistency with the warm earth-tone color scheme"
+        "CartContext.tsx file is deleted",
+        "No cart state management code remains in the codebase"
       ]
     },
     {
-      "id": "REQ-23",
-      "text": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
+      "id": "REQ-2",
+      "text": "Remove the Cart component from frontend/src/components/Cart.tsx that displays cart items, quantity controls, and checkout button",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-request"
-        ],
-        "quotes": [
-          "change the layout of both pages into a gold and silver in hexagonal pattern",
-          "Background pattern"
+          "msg-user-proceed"
         ]
       },
       "acceptanceCriteria": [
-        "Product management page displays the same repeating hexagonal pattern as the home page",
-        "Background pattern is visible behind the product form and product list",
-        "Pattern does not interfere with readability of forms or product information"
+        "Cart.tsx component file is deleted",
+        "No cart display UI remains in the application"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Remove the CartButton component from frontend/src/components/CartButton.tsx that shows cart item count and opens cart sheet",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "CartButton.tsx component file is deleted",
+        "No cart button appears in the header or anywhere else"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Remove CartButton from the Header component in frontend/src/components/Header.tsx",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "CartButton import is removed from Header.tsx",
+        "CartButton is not rendered in the Header component",
+        "Header renders without cart functionality"
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Remove all 'Add to Cart' buttons and cart-related functionality from the ProductCard component in frontend/src/components/ProductCard.tsx",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "No 'Add to Cart' buttons appear on product cards",
+        "Cart context imports are removed from ProductCard",
+        "ProductCard only shows product information and external platform link"
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Update the Checkout page in frontend/src/pages/Checkout.tsx to remove dependencies on cart state and cart-related UI",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Checkout page does not import or use CartContext",
+        "Cart items display is removed from checkout UI",
+        "Checkout page handles product purchase without cart dependency"
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "text": "Update PaymentSuccess page in frontend/src/pages/PaymentSuccess.tsx to remove cart clearing logic and cart dependencies",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "CartContext imports are removed",
+        "No cart clearing operations remain",
+        "Payment success flow works without cart"
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "text": "Remove the Payment component from frontend/src/components/Payment.tsx that creates Stripe checkout sessions using cart items",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-user-proceed"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Payment.tsx component file is deleted",
+        "No cart-based payment initiation code remains"
       ]
     }
   ],
   "constraints": [
-    "Do not modify the existing product search functionality on the home page",
-    "Do not modify the existing add/edit/delete product form functionality",
-    "Preserve the current warm earth-tone color scheme while adding the hexagonal pattern",
-    "Background pattern must not negatively impact text readability or UI component visibility"
+    "Do not modify backend/main.mo order management or Stripe integration logic",
+    "Preserve existing product catalog and search functionality",
+    "Keep authentication and admin functionality intact",
+    "Maintain hexagonal background pattern styling"
   ],
   "nonGoals": [
-    "Changing the hexagonal pattern on other pages beyond home and product management",
-    "Modifying product data structure or backend logic",
-    "Altering existing navigation or routing",
-    "Changing form validation or submission logic"
+    "Adding alternative shopping mechanisms",
+    "Modifying product display or search features",
+    "Changing order tracking functionality",
+    "Altering admin dashboard features"
   ],
   "imageRequirements": {
     "required": [],

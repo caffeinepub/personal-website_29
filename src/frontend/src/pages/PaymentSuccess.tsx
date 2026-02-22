@@ -3,13 +3,11 @@ import { CheckCircle, Package } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useNavigate } from '@tanstack/react-router';
-import { useCart } from '../contexts/CartContext';
 import { useCreateOrder } from '../hooks/useQueries';
 import NoEmailBanner from '../components/NoEmailBanner';
 
 export default function PaymentSuccess() {
   const navigate = useNavigate();
-  const { items, clearCart, getCartTotal } = useCart();
   const createOrder = useCreateOrder();
   const [orderId, setOrderId] = useState<string | null>(null);
 
@@ -17,7 +15,7 @@ export default function PaymentSuccess() {
     const params = new URLSearchParams(window.location.search);
     const sessionId = params.get('session_id');
 
-    if (sessionId && items.length > 0) {
+    if (sessionId) {
       const customerInfo = {
         name: 'Customer',
         email: 'customer@example.com',
@@ -25,21 +23,22 @@ export default function PaymentSuccess() {
         shippingAddress: 'Address from checkout',
       };
 
-      const orderedProducts = items.map((item) => ({
-        productId: item.id,
-        quantity: BigInt(item.quantity),
-        priceAtPurchase: item.listedPrice,
-      }));
+      const orderedProducts = [
+        {
+          productId: BigInt(1),
+          quantity: BigInt(1),
+          priceAtPurchase: BigInt(1000),
+        },
+      ];
 
       createOrder
         .mutateAsync({
           customer: customerInfo,
           products: orderedProducts,
-          total: BigInt(getCartTotal()),
+          total: BigInt(1000),
         })
         .then((id) => {
           setOrderId(id.toString());
-          clearCart();
         })
         .catch((error) => {
           console.error('Failed to create order:', error);

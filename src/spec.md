@@ -1,11 +1,14 @@
 # Specification
 
 ## Summary
-**Goal:** Add a gold and silver hexagonal background pattern to the home page and product management admin page.
+**Goal:** Remove all cart functionality from the application.
 
 **Planned changes:**
-- Apply a repeating gold and silver hexagonal pattern as the background for the home page
-- Apply the same hexagonal pattern as the background for the product management admin page (AdminDashboard)
-- Ensure the pattern is visible behind all content while maintaining readability
+- Remove CartContext provider and all cart state management logic
+- Delete Cart component that displays cart items and checkout button
+- Delete CartButton component from header
+- Remove all "Add to Cart" buttons from ProductCard components
+- Remove cart dependencies from Checkout and PaymentSuccess pages
+- Delete Payment component that creates Stripe sessions from cart items
 
-**User-visible outcome:** Users will see a decorative gold and silver hexagonal pattern in the background of the home page and product management page, enhancing the visual design while keeping all functionality intact.
+**User-visible outcome:** Users will no longer see cart buttons, cart UI, or "Add to Cart" options. Products can only be viewed and accessed via external platform links.

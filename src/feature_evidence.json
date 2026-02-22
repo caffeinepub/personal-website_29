@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-apply-a-gold-and-silver-hexagonal-background-pattern-to-the-home-page-that-covers-the-entire-page-background",
-      "featureTitle": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
+      "featureId": "feature-remove-the-cartcontext-provider-and-all-cart-state-management-logic-from-frontend-src-contexts-cartcontext-tsx",
+      "featureTitle": "Remove the CartContext provider and all cart state management logic from frontend/src/contexts/CartContext.tsx",
       "files": [
-        "frontend/src/index.css",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/contexts/CartContext.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -19,15 +18,15 @@
         "http-outcalls@3.0.0"
       ],
       "testIds": [
-        "REQ-22"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-apply-the-same-gold-and-silver-hexagonal-background-pattern-to-the-product-management-admin-page-admindashboard",
-      "featureTitle": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
+      "featureId": "feature-remove-the-cart-component-from-frontend-src-components-cart-tsx-that-displays-cart-items-quantity-controls-and-checkout-button",
+      "featureTitle": "Remove the Cart component from frontend/src/components/Cart.tsx that displays cart items, quantity controls, and checkout button",
       "files": [
-        "frontend/src/pages/AdminDashboard.tsx"
+        "frontend/src/components/Cart.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -40,7 +39,133 @@
         "http-outcalls@3.0.0"
       ],
       "testIds": [
-        "REQ-23"
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-cartbutton-component-from-frontend-src-components-cartbutton-tsx-that-shows-cart-item-count-and-opens-cart-sheet",
+      "featureTitle": "Remove the CartButton component from frontend/src/components/CartButton.tsx that shows cart item count and opens cart sheet",
+      "files": [
+        "frontend/src/components/CartButton.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-cartbutton-from-the-header-component-in-frontend-src-components-header-tsx",
+      "featureTitle": "Remove CartButton from the Header component in frontend/src/components/Header.tsx",
+      "files": [
+        "frontend/src/components/Header.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-all-add-to-cart-buttons-and-cart-related-functionality-from-the-productcard-component-in-frontend-src-components-productcard-tsx",
+      "featureTitle": "Remove all 'Add to Cart' buttons and cart-related functionality from the ProductCard component in frontend/src/components/ProductCard.tsx",
+      "files": [
+        "frontend/src/components/ProductCard.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-the-checkout-page-in-frontend-src-pages-checkout-tsx-to-remove-dependencies-on-cart-state-and-cart-related-ui",
+      "featureTitle": "Update the Checkout page in frontend/src/pages/Checkout.tsx to remove dependencies on cart state and cart-related UI",
+      "files": [
+        "frontend/src/pages/Checkout.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-paymentsuccess-page-in-frontend-src-pages-paymentsuccess-tsx-to-remove-cart-clearing-logic-and-cart-dependencies",
+      "featureTitle": "Update PaymentSuccess page in frontend/src/pages/PaymentSuccess.tsx to remove cart clearing logic and cart dependencies",
+      "files": [
+        "frontend/src/pages/PaymentSuccess.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-remove-the-payment-component-from-frontend-src-components-payment-tsx-that-creates-stripe-checkout-sessions-using-cart-items",
+      "featureTitle": "Remove the Payment component from frontend/src/components/Payment.tsx that creates Stripe checkout sessions using cart items",
+      "files": [
+        "frontend/src/components/Payment.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "stripe@3.0.0",
+        "http-outcalls@3.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
       ],
       "confidence": "high"
     }

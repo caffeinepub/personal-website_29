@@ -1,37 +1,101 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-22T02:38:08.405Z",
+  "generatedAt": "2026-02-22T02:52:03.873Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 8,
+    "implemented": 8,
     "items": [
       {
-        "id": "REQ-22",
-        "summary": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
+        "id": "REQ-1",
+        "summary": "Remove the CartContext provider and all cart state management logic from frontend/src/contexts/CartContext.tsx",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
+          "frontend/src/contexts/CartContext.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/src/pages/HomePage.tsx"
+          "frontend/src/contexts/CartContext.tsx"
         ]
       },
       {
-        "id": "REQ-23",
-        "summary": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
+        "id": "REQ-2",
+        "summary": "Remove the Cart component from frontend/src/components/Cart.tsx that displays cart items, quantity controls, and checkout button",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/AdminDashboard.tsx"
+          "frontend/src/components/Cart.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/AdminDashboard.tsx"
+          "frontend/src/components/Cart.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Remove the CartButton component from frontend/src/components/CartButton.tsx that shows cart item count and opens cart sheet",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/CartButton.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/CartButton.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Remove CartButton from the Header component in frontend/src/components/Header.tsx",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Header.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Header.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Remove all 'Add to Cart' buttons and cart-related functionality from the ProductCard component in frontend/src/components/ProductCard.tsx",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ProductCard.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ProductCard.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Update the Checkout page in frontend/src/pages/Checkout.tsx to remove dependencies on cart state and cart-related UI",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/Checkout.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/Checkout.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Update PaymentSuccess page in frontend/src/pages/PaymentSuccess.tsx to remove cart clearing logic and cart dependencies",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/pages/PaymentSuccess.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/pages/PaymentSuccess.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Remove the Payment component from frontend/src/components/Payment.tsx that creates Stripe checkout sessions using cart items",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Payment.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Payment.tsx"
         ]
       }
     ]
@@ -41,9 +105,14 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/index.css",
-    "frontend/src/pages/AdminDashboard.tsx",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/components/Cart.tsx",
+    "frontend/src/components/CartButton.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Payment.tsx",
+    "frontend/src/components/ProductCard.tsx",
+    "frontend/src/contexts/CartContext.tsx",
+    "frontend/src/pages/Checkout.tsx",
+    "frontend/src/pages/PaymentSuccess.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

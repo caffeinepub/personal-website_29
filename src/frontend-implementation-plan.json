@@ -1,42 +1,129 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add gold and silver hexagonal background pattern to home and product pages",
+  "title": "Remove cart functionality",
   "requirements": [
     {
-      "id": "REQ-22",
-      "summary": "Apply a gold and silver hexagonal background pattern to the home page that covers the entire page background",
+      "id": "REQ-1",
+      "summary": "Remove the CartContext provider and all cart state management logic",
       "acceptanceCriteria": [
-        "Home page displays a repeating hexagonal pattern in gold and silver colors as the background",
-        "Background pattern is visible behind all existing content",
-        "Pattern maintains visual consistency with the warm earth-tone color scheme"
+        "CartContext.tsx file is deleted",
+        "No cart state management code remains in the codebase"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Add CSS classes for the hexagonal background pattern using SVG data URI. Create a repeating hexagonal pattern in gold (#D4AF37) and silver (#C0C0C0) colors that integrates with the warm earth-tone color scheme. The pattern should be defined as a reusable utility class that can be applied to page backgrounds without interfering with existing color variables or typography styles."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Add a wrapping div with the hexagonal pattern background class around the existing Hero, Products, and About sections. Ensure the background covers the entire page height and is positioned behind all content. Maintain all existing functionality including smooth scrolling and section rendering."
+          "path": "frontend/src/contexts/CartContext.tsx",
+          "operation": "delete",
+          "description": "Delete the CartContext file that provides cart state management with localStorage persistence, including add/remove/update/clear operations and total/count calculations"
         }
       ]
     },
     {
-      "id": "REQ-23",
-      "summary": "Apply the same gold and silver hexagonal background pattern to the product management admin page (AdminDashboard)",
+      "id": "REQ-2",
+      "summary": "Remove the Cart component that displays cart items and checkout functionality",
       "acceptanceCriteria": [
-        "Product management page displays the same repeating hexagonal pattern as the home page",
-        "Background pattern is visible behind the product form and product list",
-        "Pattern does not interfere with readability of forms or product information"
+        "Cart.tsx component file is deleted",
+        "No cart display UI remains in the application"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/AdminDashboard.tsx",
+          "path": "frontend/src/components/Cart.tsx",
+          "operation": "delete",
+          "description": "Delete the Cart component that displays cart items with quantity controls, remove functionality, total calculation, and checkout button with empty state"
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Remove the CartButton component that shows cart item count and opens cart sheet",
+      "acceptanceCriteria": [
+        "CartButton.tsx component file is deleted",
+        "No cart button appears in the header or anywhere else"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/CartButton.tsx",
+          "operation": "delete",
+          "description": "Delete the CartButton component that renders a header cart button with item count badge and opens a slide-out sheet containing the full Cart component"
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Remove CartButton from the Header component",
+      "acceptanceCriteria": [
+        "CartButton import is removed from Header.tsx",
+        "CartButton is not rendered in the Header component",
+        "Header renders without cart functionality"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
           "operation": "modify",
-          "description": "Apply the same hexagonal pattern background class created in REQ-22 to the AdminDashboard page. Add a wrapping div with the pattern behind the AdminGuard-protected content including overview statistics, quick actions, and MarkupSettings component. Ensure text readability is maintained by keeping existing card backgrounds and contrast levels intact."
+          "description": "Remove the CartButton import and its rendering from the Header component. The Header currently displays CartButton alongside the mobile menu toggle, login button, and conditional admin/orders links. Remove only the cart button while preserving all other header functionality including navigation, mobile menu, authentication, and admin links"
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Remove all 'Add to Cart' buttons and cart-related functionality from the ProductCard component",
+      "acceptanceCriteria": [
+        "No 'Add to Cart' buttons appear on product cards",
+        "Cart context imports are removed from ProductCard",
+        "ProductCard only shows product information and external platform link"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "modify",
+          "description": "Remove CartContext import and 'Add to Cart' button functionality from the ProductCard component. The component currently displays a single product with image, platform logo, price, description, and buttons to add to cart or view on the original platform. Keep the product display and external platform link button, remove only the cart-related code"
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Update the Checkout page to remove dependencies on cart state and cart-related UI",
+      "acceptanceCriteria": [
+        "Checkout page does not import or use CartContext",
+        "Cart items display is removed from checkout UI",
+        "Checkout page handles product purchase without cart dependency"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/Checkout.tsx",
+          "operation": "modify",
+          "description": "Remove CartContext import and cart items display from the Checkout page. The component currently collects customer information via a form, displays cart items and total, and integrates with Payment and PaymentSetup components. Modify to collect customer information only and remove the cart items display section while preserving the customer form and payment integration"
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Update PaymentSuccess page to remove cart clearing logic and cart dependencies",
+      "acceptanceCriteria": [
+        "CartContext imports are removed",
+        "No cart clearing operations remain",
+        "Payment success flow works without cart"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/PaymentSuccess.tsx",
+          "operation": "modify",
+          "description": "Remove CartContext import and cart clearing logic from the PaymentSuccess page. The component currently creates an order from cart items after successful Stripe payment, clears the cart, displays order ID, and provides navigation. Modify to remove cart-related operations while preserving the order creation flow, success message display, and navigation options"
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Remove the Payment component that creates Stripe checkout sessions using cart items",
+      "acceptanceCriteria": [
+        "Payment.tsx component file is deleted",
+        "No cart-based payment initiation code remains"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Payment.tsx",
+          "operation": "delete",
+          "description": "Delete the Payment component that displays customer shipping info and initiates Stripe checkout by creating a session with cart items and redirect URLs"
         }
       ]
     }
